@@ -1,10 +1,9 @@
 import React from "react";
 
-const DisplaySelectedCard = ({ card }) => {
-    console.log(card)
+const DisplaySelectedCard = ({ card, contextValueExample }) => {
+  console.log("gg 3", contextValueExample);
 
-    if(!card)
-        return <h1>pas card bell</h1>
+  if (!card) return <h1>pas card bell</h1>;
 
   return (
     <div>

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card } from "reactstrap";
+import { CardContext } from "../App";
 
 const styles = {
   image: {
@@ -10,13 +11,15 @@ const styles = {
 const DisplayCard = props => {
   const { prout, onSelectCard, selectedCard } = props;
   //   const prout = props.prout;
-
+  const value = useContext(CardContext);
+  console.log('gg 4', value)
   const generateCards = () => {
     const output = [];
-    for (let i = 0; i < prout.length; i++) output.push(<img src={prout[i].imageUrl} />);
+    for (let i = 0; i < prout.length; i++)
+      output.push(<img src={prout[i].imageUrl} />);
     return output;
   };
-  
+
   return (
     <div>
       <h1>DisplayCard</h1>
