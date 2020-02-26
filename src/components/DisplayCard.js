@@ -1,39 +1,28 @@
 import React, { useContext } from "react";
-import { Card } from "reactstrap";
-import { CardContext } from "../App";
+import { CardContext } from "../providers/CardProvider";
 
 const styles = {
   image: {
-    border: "3px solid green"
+    border: "30px solid green"
   }
 };
 
 const DisplayCard = props => {
-  const { prout, onSelectCard, selectedCard } = props;
-  //   const prout = props.prout;
-  const value = useContext(CardContext);
-  console.log('gg 4', value)
-  const generateCards = () => {
-    const output = [];
-    for (let i = 0; i < prout.length; i++)
-      output.push(<img src={prout[i].imageUrl} />);
-    return output;
-  };
+  const cardCtxt = useContext(CardContext);
 
   return (
     <div>
       <h1>DisplayCard</h1>
-      {generateCards()}
-      {prout.map((card, i) => (
+      {cardCtxt.cards.map((card, i) => (
         <img
           key={`card-${i}`}
           src={card.imageUrl}
           alt=""
           className="image"
-          onClick={() => onSelectCard(i)}
+          onClick={() => cardCtxt.prout(i)}
           style={{
             ...styles.image,
-            borderColor: i === selectedCard ? "red" : "green"
+            borderColor: i === cardCtxt.selectedCardIndex ? "red" : "green"
           }}
         />
       ))}

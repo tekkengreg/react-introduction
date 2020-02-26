@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CardContext } from "../providers/CardProvider";
 
-const DisplaySelectedCard = ({ card, contextValueExample }) => {
-  console.log("gg 3", contextValueExample);
+const DisplaySelectedCard = () => {
+  const { cards, selectedCardIndex } = useContext(CardContext);
 
-  if (!card) return <h1>pas card bell</h1>;
+  if (selectedCardIndex === null) return <h1>pas card bell</h1>;
 
   return (
     <div>
       <h1>DisplaySelectedCard</h1>
-      <img src={card && card.imageUrl} />
+      <img
+        src={selectedCardIndex !== null && cards[selectedCardIndex].imageUrl}
+      />
     </div>
   );
 };
